@@ -1,0 +1,7 @@
+C:\FIS\C#\ConsoleApp_Assignment2\ConsoleApp_Assignment2\bin\Debug\ConsoleApp_Assignment2.exe.config
+C:\FIS\C#\ConsoleApp_Assignment2\ConsoleApp_Assignment2\bin\Debug\ConsoleApp_Assignment2.exe
+C:\FIS\C#\ConsoleApp_Assignment2\ConsoleApp_Assignment2\bin\Debug\ConsoleApp_Assignment2.pdb
+C:\FIS\C#\ConsoleApp_Assignment2\ConsoleApp_Assignment2\obj\Debug\ConsoleApp_Assignment2.csproj.CoreCompileInputs.cache
+C:\FIS\C#\ConsoleApp_Assignment2\ConsoleApp_Assignment2\obj\Debug\ConsoleApp_Assignment2.exe
+C:\FIS\C#\ConsoleApp_Assignment2\ConsoleApp_Assignment2\obj\Debug\ConsoleApp_Assignment2.pdb
+C:\FIS\C#\ConsoleApp_Assignment2\ConsoleApp_Assignment2\obj\Debug\ConsoleApp_Assignment2.csproj.AssemblyReference.cache
