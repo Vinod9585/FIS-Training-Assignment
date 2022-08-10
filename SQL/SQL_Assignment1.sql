@@ -57,6 +57,7 @@ select ename from tblEmp where ename like 'A%'
 
 select ename from tblEmp where mgr_id is null
 
+-- select e1.ename,e2.ename as 'reports to' from tblEmp e1 join tblEmp e2 on e1.mgr_id=e2.empno
 
 -- 3. List employee name, number and salary for those employees who earn in the range 1200 to 1400.
 
@@ -104,6 +105,11 @@ group by tblemp.deptno) result on tblDept.deptno = result.dnum
 union
 select dname,deptno,sal=0 from tblDept where deptno not in (select distinct deptno from tblEmp)
 
+-- OR
+
+select d.dname,d.deptno, sum(e.sal) as 'Total Salary' from tbldept d full outer join tblEmp e
+on d.deptno=e.deptno
+group by d.deptno,d.dname
 
 -- 11. Find out salary of both MILLER and SMITH.
 
@@ -122,6 +128,5 @@ select ename, sal*12 as 'Annual Salary' from tblEmp where ename ='SMITH'
 -- 14. List the name and salary for all employees whose salary is not in the range of 1500 and 2850.
 
 select ename, sal from tblEmp where sal not between 1500 and 2850
-
 
 
