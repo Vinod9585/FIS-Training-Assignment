@@ -60,16 +60,27 @@ select e2.ename,e1.sal,e1.comm from tblEmp e1 inner join
 
 select ename from tblEmp where ename like '%l%l%' and (deptno=30 or mgr_id=7782)
 
+-----------------------------------------------------------
+
 -- 16. Display the names of employees with experience of over 10 years and under 20 yrs.
 
+-- using RollUp
+select coalesce(ename,'Total Employees')as 'Employee Name', DATEDIFF(yy,hiredate,getdate()) as 'Experience in Years',count(ename) as 'Number of Employees' from tblemp
+where DATEDIFF(yy,hiredate,getdate())>10 and DATEDIFF(yy,hiredate,getdate())<42
+group by rollup(DATEDIFF(yy,hiredate,getdate()),ename)
+
+--ename and count separately
 select ename, DATEDIFF(yy,hiredate,getdate()) as 'Experience in Years' from tblemp
-where DATEDIFF(yy,hiredate,getdate())>10 and DATEDIFF(yy,hiredate,getdate())<20
+where DATEDIFF(yy,hiredate,getdate())>10 and DATEDIFF(yy,hiredate,getdate())<42
 order by [Experience in Years]
 
 	-- count of employees with experience
 	select DATEDIFF(yy,hiredate,getdate()) as 'Experience in Years', count(*) as 'Number of Employees' from tblEmp
-	where DATEDIFF(yy,hiredate,getdate())>10 and DATEDIFF(yy,hiredate,getdate())<20
+	where DATEDIFF(yy,hiredate,getdate())>10 and DATEDIFF(yy,hiredate,getdate())<42
 	group by DATEDIFF(yy,hiredate,getdate())
+
+
+-----------------------------------------------------------
 
  -- 17. Retrieve the names of departments in ascending order and their employees in descending order. 
  select d.dname, e.ename from tblDept d join tblEmp e 
