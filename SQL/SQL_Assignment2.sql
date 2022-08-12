@@ -66,6 +66,10 @@ select ename, DATEDIFF(yy,hiredate,getdate()) as 'Experience in Years' from tble
 where DATEDIFF(yy,hiredate,getdate())>10 and DATEDIFF(yy,hiredate,getdate())<20
 order by [Experience in Years]
 
+	-- count of employees with experience
+	select DATEDIFF(yy,hiredate,getdate()) as 'Experience in Years', count(*) as 'Number of Employees' from tblEmp
+	where DATEDIFF(yy,hiredate,getdate())>10 and DATEDIFF(yy,hiredate,getdate())<20
+	group by DATEDIFF(yy,hiredate,getdate())
 
  -- 17. Retrieve the names of departments in ascending order and their employees in descending order. 
  select d.dname, e.ename from tblDept d join tblEmp e 
