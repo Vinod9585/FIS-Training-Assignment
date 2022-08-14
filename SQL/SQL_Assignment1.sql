@@ -2,6 +2,8 @@ create database CompanyDB
 
 use CompanyDB
 
+--###########################################################################################################
+
 create table tblDept
 (
 	deptno int primary key,
@@ -45,12 +47,14 @@ insert into tblEmp(empno,ename,job,mgr_id,hiredate,sal,deptno) values(7900, 'JAM
 insert into tblEmp(empno,ename,job,mgr_id,hiredate,sal,deptno) values(7902, 'FORD', 'ANALYST', 7566, '03-DEC-81', 3000, 20)
 insert into tblEmp(empno,ename,job,mgr_id,hiredate,sal,deptno) values(7934, 'MILLER', 'CLERK', 7782, '23-JAN-82', 1300, 10)
 
-
--- Queries --
+--###################################################################################################################################################
 
 -- 1. List all employees whose name begins with 'A'.
 
 select ename from tblEmp where ename like 'A%'
+
+
+--###########################################################################################################
 
 
 -- 2. Select all those employees who don't have a manager.
@@ -59,9 +63,16 @@ select ename from tblEmp where mgr_id is null
 
 -- select e1.ename,e2.ename as 'reports to' from tblEmp e1 join tblEmp e2 on e1.mgr_id=e2.empno
 
+
+--###########################################################################################################
+
+
 -- 3. List employee name, number and salary for those employees who earn in the range 1200 to 1400.
 
 select ename, empno, sal from tblEmp where sal between 1200 and 1400
+
+
+--###########################################################################################################
 
 
 -- 4. Give all the employees in the RESEARCH department a 10% pay rise.
@@ -70,9 +81,15 @@ select ename, empno, sal from tblEmp where sal between 1200 and 1400
 select empno,ename,job,mgr_id,hiredate,sal as 'Old Salary',(sal+(sal*0.10)) as 'Salary after Hike',deptno from tblemp where deptno=20
 
 
+--###########################################################################################################
+
+
 -- 5. Find the number of CLERKS employed. Give it a descriptive heading.
 
 select count(*) as 'Number of Clerks' from tblemp where job='Clerk'
+
+
+--###########################################################################################################
 
 
 -- 6. Find the average salary for each job type and the number of people employed in each job.
@@ -80,9 +97,15 @@ select count(*) as 'Number of Clerks' from tblemp where job='Clerk'
 select job, count(*) as 'Number of Employees', avg(sal) as 'Average Salary of Employees' from tblEmp group by job
 
 
+--###########################################################################################################
+
+
 -- 7. List the employees with the lowest and highest salary.
 
 select ename,sal from tblemp where sal=(select min(sal) from tblEmp) or sal=(select max(sal) from tblEmp)
+
+
+--###########################################################################################################
 
 
 -- 8. List full details of departments that don't have any employees.
@@ -90,10 +113,16 @@ select ename,sal from tblemp where sal=(select min(sal) from tblEmp) or sal=(sel
 select * from tblDept where deptno not in (select distinct deptno from tblEmp)
 
 
+--###########################################################################################################
+
+
 -- 9. Get the names and salaries of all the analysts earning more than 1200 who are based in department 20.
 --    Sort the answer by ascending order of name. 
 
 select ename, sal from tblEmp where job='Analyst' and sal>1200 and deptno=20 order by ename
+
+
+--###########################################################################################################
 
 
 -- 10. For each department, list its name and number together with the total salary paid to employees in that department.
@@ -111,9 +140,16 @@ select d.dname,d.deptno, sum(e.sal) as 'Total Salary' from tbldept d full outer 
 on d.deptno=e.deptno
 group by d.deptno,d.dname
 
+
+--###########################################################################################################
+
+
 -- 11. Find out salary of both MILLER and SMITH.
 
 select ename, sal from tblEmp where ename='MILLER' or ename='SMITH'
+
+
+--###########################################################################################################
 
 
 -- 12. Find out the names of the employees whose name begin with ‘A’ or ‘M’.
@@ -121,12 +157,20 @@ select ename, sal from tblEmp where ename='MILLER' or ename='SMITH'
 select ename from tblEmp where ename like 'A%' or ename like 'M%'
 
 
+--###########################################################################################################
+
+
 -- 13. Compute yearly salary of SMITH. 
 
 select ename, sal*12 as 'Annual Salary' from tblEmp where ename ='SMITH'
+
+
+--###########################################################################################################
+
 
 -- 14. List the name and salary for all employees whose salary is not in the range of 1500 and 2850.
 
 select ename, sal from tblEmp where sal not between 1500 and 2850
 
 
+--###########################################################################################################
