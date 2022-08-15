@@ -184,7 +184,7 @@ insert into tblCourseRegistration values(2,'DN003','FN'),
 
 select C_Name, count(*) as 'Number of Registered Students' from tblCourseDetails d join tblCourseRegistration r
 on d.C_id = r.Cid
-where Start_date = '2018-01-02' and End_date = '2018-02-28'   
+where Start_date = '2018-01-02' and End_date < '2018-02-28'   
 group by C_Name,Cid
 order by Cid desc
 
