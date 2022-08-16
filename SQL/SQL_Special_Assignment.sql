@@ -112,9 +112,9 @@ End_Date DATE,
 Task VARCHAR(25) Not Null,
 Status VARCHAR(15) Not Null,
 FOREIGN KEY(Project_ID) REFERENCES tblprojects(Project_ID),
-FOREIGN KEY(Empno) REFERENCES tblemployees(Empno)
+FOREIGN KEY(Empno) REFERENCES tblemployees(Empno),
+PRIMARY KEY(Project_ID,Empno)
 )
-
 
 insert into tblEmpProjectTasks values(401,7001,'01-Apr-11','20-Apr-11','System Analysis','Completed'),
 (401,7002,'21-Apr-11','30-May-11','System Design','Completed'),
